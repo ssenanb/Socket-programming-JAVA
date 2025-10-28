@@ -9,7 +9,7 @@ public class client{
         
     public static void main(String[] args) {
 
-        String host = "10.214.124.54";
+        String host = "10.142.1.191";
         int port = 5550;
         String ogrenciNumarasi = "23060533-23060491";
 
