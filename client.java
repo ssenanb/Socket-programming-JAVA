@@ -17,40 +17,29 @@ public class client{
             BufferedReader in = new BufferedReader(new InputStreamReader(serverSocket.getInputStream()));
             PrintWriter out = new PrintWriter(serverSocket.getOutputStream(), true);
 
+           for(int i =0; i<10; i++) {
+               out.println("merhaba");
+               System.out.println("istemci: merhaba " );
 
-            // 1. Döngü: Sunucu "sana da merhaba" diyene kadar merhaba gönder
-            for(int i =0; i<10; i++) {
-                    out.println("merhaba");
-                    System.out.println("istemci: merhaba " );
-
-               // if (in.ready()) {  // Sunucudan mesaj gelmiş mi kontrol
-                    serverMesaji = in.readLine();
-                    // System.out.println("Sunucu: " + serverMesaji);
+               serverMesaji = in.readLine();
                     
-                    if (serverMesaji.equalsIgnoreCase("sana da merhaba")) {
-                     System.out.println("Sunucu: " + serverMesaji);
-                    }
-
-                //}
+               if (serverMesaji.equalsIgnoreCase("sana da merhaba"))
+                  System.out.println("Sunucu: " + serverMesaji);
             }
 
-            while (true) {
-                serverMesaji = in.readLine();
-                System.out.println("Sunucu: " + serverMesaji);
+             while (true) {
+                  serverMesaji = in.readLine();
+                  System.out.println("Sunucu: " + serverMesaji);
 
-                if (serverMesaji.equalsIgnoreCase("Derdin ne senin?")) {
-                    out.println(ogrenciNumarasi); // öğrenci numarası gönder
-                    System.out.println("İstemci: " + ogrenciNumarasi);
-
-                } else if (serverMesaji.equalsIgnoreCase("Kaydedildi görüşürüz.")) {
-                    System.out.println("sunucu " + serverMesaji);
-               
-                }break;
+                  if (serverMesaji.equalsIgnoreCase("Derdin ne senin?")) {
+                      out.println(ogrenciNumarasi); // öğrenci numarası gönder
+                      System.out.println("İstemci: " + ogrenciNumarasi);
+                  }else if (serverMesaji.equalsIgnoreCase("Kaydedildi görüşürüz.")) 
+                      System.out.println("sunucu " + serverMesaji);   
+                  break;
             }
-
-            }catch (IOException ex) {
+        }catch (IOException ex) {
             ex.printStackTrace();
         }
-    
     }
 }
